@@ -10,8 +10,6 @@
 !.yarn/releases
 !.yarn/versions
 
-public/schoolImages/*
-
 # testing
 /coverage
 
