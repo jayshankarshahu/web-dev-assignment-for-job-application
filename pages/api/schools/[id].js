@@ -1,18 +1,11 @@
 import mysql from 'mysql2/promise';
-
-// Database connection configuration
-const dbConfig = {
-  host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || '',
-  database: process.env.DB_NAME || 'school_db',
-};
+import dbConfig from '../_config';
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
-    return res.status(405).json({ 
-      success: false, 
-      message: 'Method not allowed' 
+    return res.status(405).json({
+      success: false,
+      message: 'Method not allowed'
     });
   }
 
@@ -45,7 +38,7 @@ export default async function handler(req, res) {
         FROM schools 
         WHERE id = ?
       `;
-      
+
       const [schools] = await connection.execute(query, [schoolId]);
 
       if (schools.length === 0) {
@@ -71,21 +64,21 @@ export default async function handler(req, res) {
 
   } catch (error) {
     console.error('Error fetching school:', error);
-    
+
     if (error.code === 'ECONNREFUSED') {
-      res.status(500).json({ 
-        success: false, 
-        message: 'Database connection failed' 
+      res.status(500).json({
+        success: false,
+        message: 'Database connection failed'
       });
     } else if (error.code === 'ER_NO_SUCH_TABLE') {
-      res.status(500).json({ 
-        success: false, 
-        message: 'Schools table not found' 
+      res.status(500).json({
+        success: false,
+        message: 'Schools table not found'
       });
     } else {
-      res.status(500).json({ 
-        success: false, 
-        message: 'Internal server error' 
+      res.status(500).json({
+        success: false,
+        message: 'Internal server error'
       });
     }
   }

@@ -2,6 +2,7 @@ import mysql from 'mysql2/promise';
 import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
+import dbConfig from '../_config';
 
 // Configure multer for file uploads
 const storage = multer.diskStorage({
@@ -35,14 +36,6 @@ const upload = multer({
     }
   }
 });
-
-// Database connection configuration
-const dbConfig = {
-  host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || '',
-  database: process.env.DB_NAME || 'school_db',
-};
 
 // Helper function to run multer middleware
 const runMiddleware = (req, res, fn) => {
