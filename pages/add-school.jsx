@@ -2,6 +2,8 @@ import { useForm, SubmitHandler } from "react-hook-form"
 import { useState } from "react"
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSchool } from '@fortawesome/free-solid-svg-icons';
 
 export default function App() {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -99,21 +101,21 @@ export default function App() {
 
     return (
 
-        <div className="min-h-screen bg-gray-900 flex items-center justify-center p-4">
-            <form className="bg-gray-800 text-gray-300 rounded-lg shadow-lg max-w-lg w-full p-8 space-y-6" onSubmit={handleSubmit(onSubmit, onError)}>
-                <h2 className="text-3xl font-semibold text-white mb-6 text-center">
-                    Add New School
-                </h2>
-
+        <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+            <form className="bg-white text-gray-900 rounded-xl shadow-lg max-w-lg w-full p-8 space-y-6 border border-gray-200" onSubmit={handleSubmit(onSubmit, onError)}>
+                <h1 className="text-3xl font-bold text-gray-900 flex items-center">
+                    <FontAwesomeIcon icon={faSchool} className="mr-3 text-blue-600" />
+                    Register A School
+                </h1>
                 <div>
-                    <label htmlFor="schoolName" className="block mb-1 font-medium">
+                    <label htmlFor="schoolName" className="block mb-1 font-medium text-gray-700">
                         School Name *
                     </label>
                     <input
                         id="schoolName"
                         type="text"
                         placeholder="Enter school name"
-                        className={`w-full bg-gray-700 border rounded px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gray-500 ${errors.schoolName ? 'border-red-500' : 'border-gray-600'
+                        className={`w-full bg-white border rounded-lg px-3 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 ${errors.schoolName ? 'border-red-500' : 'border-gray-300'
                             }`}
                         {...register('schoolName', {
                             required: "School name is required",
@@ -132,18 +134,18 @@ export default function App() {
                         })}
                     />
                     {errors.schoolName && (
-                        <p className="text-red-400 text-sm mt-1">{errors.schoolName.message}</p>
+                        <p className="text-red-500 text-sm mt-1">{errors.schoolName.message}</p>
                     )}
                 </div>
 
                 <div>
-                    <label htmlFor="schoolAddress" className="block mb-1 font-medium">
+                    <label htmlFor="schoolAddress" className="block mb-1 font-medium text-gray-700">
                         School Full Address *
                     </label>
                     <textarea
                         id="schoolAddress"
                         placeholder="Enter full address"
-                        className={`w-full bg-gray-700 border rounded px-3 py-2 text-white resize-none focus:outline-none focus:ring-2 focus:ring-gray-500 ${errors.schoolAddress ? 'border-red-500' : 'border-gray-600'
+                        className={`w-full bg-white border rounded-lg px-3 py-2 text-gray-900 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 ${errors.schoolAddress ? 'border-red-500' : 'border-gray-300'
                             }`}
                         rows={3}
                         {...register('schoolAddress', {
@@ -159,20 +161,20 @@ export default function App() {
                         })}
                     />
                     {errors.schoolAddress && (
-                        <p className="text-red-400 text-sm mt-1">{errors.schoolAddress.message}</p>
+                        <p className="text-red-500 text-sm mt-1">{errors.schoolAddress.message}</p>
                     )}
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                        <label htmlFor="city" className="block mb-1 font-medium">
+                        <label htmlFor="city" className="block mb-1 font-medium text-gray-700">
                             City *
                         </label>
                         <input
                             id="city"
                             type="text"
                             placeholder="City"
-                            className={`w-full bg-gray-700 border rounded px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gray-500 ${errors.city ? 'border-red-500' : 'border-gray-600'
+                            className={`w-full bg-white border rounded-lg px-3 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 ${errors.city ? 'border-red-500' : 'border-gray-300'
                                 }`}
                             {...register('city', {
                                 required: "City is required",
@@ -191,17 +193,17 @@ export default function App() {
                             })}
                         />
                         {errors.city && (
-                            <p className="text-red-400 text-sm mt-1">{errors.city.message}</p>
+                            <p className="text-red-500 text-sm mt-1">{errors.city.message}</p>
                         )}
                     </div>
 
                     <div>
-                        <label htmlFor="state" className="block mb-1 font-medium">
+                        <label htmlFor="state" className="block mb-1 font-medium text-gray-700">
                             State *
                         </label>
                         <select
                             id="state"
-                            className={`w-full bg-gray-700 border rounded px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gray-500 ${errors.state ? 'border-red-500' : 'border-gray-600'
+                            className={`w-full bg-white border rounded-lg px-3 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 ${errors.state ? 'border-red-500' : 'border-gray-300'
                                 }`}
                             {...register('state', {
                                 required: "Please select a state"
@@ -239,20 +241,20 @@ export default function App() {
                             <option value="Delhi">Delhi</option>
                         </select>
                         {errors.state && (
-                            <p className="text-red-400 text-sm mt-1">{errors.state.message}</p>
+                            <p className="text-red-500 text-sm mt-1">{errors.state.message}</p>
                         )}
                     </div>
                 </div>
 
                 <div>
-                    <label htmlFor="contact" className="block mb-1 font-medium">
+                    <label htmlFor="contact" className="block mb-1 font-medium text-gray-700">
                         Contact *
                     </label>
                     <input
                         id="contact"
                         type="tel"
                         placeholder="Phone number"
-                        className={`w-full bg-gray-700 border rounded px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gray-500 ${errors.contact ? 'border-red-500' : 'border-gray-600'
+                        className={`w-full bg-white border rounded-lg px-3 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 ${errors.contact ? 'border-red-500' : 'border-gray-300'
                             }`}
                         maxLength="10"
                         {...register('contact', {
@@ -264,19 +266,19 @@ export default function App() {
                         })}
                     />
                     {errors.contact && (
-                        <p className="text-red-400 text-sm mt-1">{errors.contact.message}</p>
+                        <p className="text-red-500 text-sm mt-1">{errors.contact.message}</p>
                     )}
                 </div>
 
                 <div>
-                    <label htmlFor="email" className="block mb-1 font-medium">
+                    <label htmlFor="email" className="block mb-1 font-medium text-gray-700">
                         Email ID *
                     </label>
                     <input
                         id="email"
                         type="email"
                         placeholder="Email address"
-                        className={`w-full bg-gray-700 border rounded px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gray-500 ${errors.email ? 'border-red-500' : 'border-gray-600'
+                        className={`w-full bg-white border rounded-lg px-3 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 ${errors.email ? 'border-red-500' : 'border-gray-300'
                             }`}
                         {...register('email', {
                             required: "Email is required",
@@ -291,19 +293,19 @@ export default function App() {
                         })}
                     />
                     {errors.email && (
-                        <p className="text-red-400 text-sm mt-1">{errors.email.message}</p>
+                        <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
                     )}
                 </div>
 
                 <div>
-                    <label htmlFor="image" className="block mb-1 font-medium">
+                    <label htmlFor="image" className="block mb-1 font-medium text-gray-700">
                         School Image
                     </label>
                     <input
                         id="image"
                         type="file"
                         accept="image/*"
-                        className={`w-full text-gray-400 bg-gray-700 border rounded px-3 py-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-gray-500 ${errors.image ? 'border-red-500' : 'border-gray-600'
+                        className={`w-full text-gray-600 bg-white border rounded-lg px-3 py-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 file:mr-3 file:py-1 file:px-3 file:rounded file:border-0 file:text-sm file:font-medium file:bg-blue-50 file:text-blue-600 hover:file:bg-blue-100 ${errors.image ? 'border-red-500' : 'border-gray-300'
                             }`}
                         {...register('image', {
                             validate: {
@@ -326,7 +328,7 @@ export default function App() {
                         })}
                     />
                     {errors.image && (
-                        <p className="text-red-400 text-sm mt-1">{errors.image.message}</p>
+                        <p className="text-red-500 text-sm mt-1">{errors.image.message}</p>
                     )}
                     <p className="text-gray-500 text-xs mt-1">
                         Supported formats: JPEG, JPG, PNG, GIF. Max size: 5MB
@@ -336,9 +338,9 @@ export default function App() {
                 <button
                     type="submit"
                     disabled={isSubmitting}
-                    className={`w-full font-semibold py-3 rounded shadow transition-colors ${isSubmitting
-                            ? 'bg-gray-600 cursor-not-allowed text-gray-400'
-                            : 'bg-gray-700 hover:bg-gray-600 text-white'
+                    className={`w-full font-semibold py-3 rounded-lg shadow transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${isSubmitting
+                        ? 'bg-gray-400 cursor-not-allowed text-gray-600'
+                        : 'bg-blue-600 hover:bg-blue-700 text-white'
                         }`}
                 >
                     {isSubmitting ? 'Adding School...' : 'Add School'}
@@ -358,7 +360,6 @@ export default function App() {
                 pauseOnHover
                 theme="light"
             />
-
         </div>
 
 
